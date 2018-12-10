@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wall
   - obstacle
+  - end
   layers:
   - Default
   - TransparentFX
