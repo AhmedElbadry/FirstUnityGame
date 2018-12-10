@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     bool gameEnded = false;
 
     public float restartDelay = 2f;
+    public float startNewLevelDelay = 2f;
+
 
     public GameObject completeLevelUI;
 
@@ -27,12 +29,19 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("asdasd");
         completeLevelUI.SetActive(true);
+        Invoke("loadNextScene", startNewLevelDelay);
     }
+
     void restart()
     {
         //SceneManager.LoadScene("Level01");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameEnded = false;
+    }
+
+    public void loadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 
