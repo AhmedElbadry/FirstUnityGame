@@ -54,7 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\camera.cs" />
-     <Compile Include="Assets\playerMovement.cs" />
+     <Compile Include="Assets\PlayerCollision.cs" />
+     <Compile Include="Assets\PlayerMovement.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Ahmed/Desktop/FirstUnityGame/FirstUnityGame/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
