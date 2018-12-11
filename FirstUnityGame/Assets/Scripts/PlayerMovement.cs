@@ -4,13 +4,16 @@
 public class PlayerMovement : MonoBehaviour {
     public Rigidbody rb;
     public float movementVelocity = 500;
+    public float brakesControl = 100;
+
+    float EP = 0.1f;
 
     public Vector3 v;
 
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        //rb.velocity = new Vector3(0, rb.velocity.y, 0);
         if (Input.GetKey("w"))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movementVelocity * Time.deltaTime);
@@ -32,8 +35,23 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector3(-movementVelocity * Time.deltaTime, rb.velocity.y, rb.velocity.z);
             //rb.AddForce(-movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
+        if (Input.GetKey("space"))
+        {
+            float x = rb.velocity.x;
+            float y = rb.velocity.y;
+            float z = rb.velocity.z;
 
-        
+            Debug.Log("v was " + x + " " + y + " " + z);
+
+            measureVelocityAfterBrakes(ref x);
+            //measureVelocityAfterBrakes(ref y);
+            measureVelocityAfterBrakes(ref z);
+            rb.velocity = new Vector3(x , y, z);
+            Debug.Log("v now " + x + " " + y + " " + z);
+
+            //rb.AddForce(-movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        }
+
 
         /*if (rb.position.y < -1f)
         {
@@ -44,5 +62,13 @@ public class PlayerMovement : MonoBehaviour {
     public void movePlayerWithGround(Vector3 step)
     {
         rb.position += step;
+    }
+
+    void measureVelocityAfterBrakes(ref float x)
+    {
+        if (Mathf.Abs(x) > EP)
+            x += ((x > 0) ? -1 : 1) * Time.deltaTime * brakesControl;
+        else
+            x = 0;
     }
 }

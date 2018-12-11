@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4376105138339468}
   - component: {fileID: 33180001476304818}
   - component: {fileID: 23711011597777216}
-  - component: {fileID: 65325344103688752}
   - component: {fileID: 54631165988744994}
   - component: {fileID: 114363831108206078}
+  - component: {fileID: 135244375271419520}
   m_Layer: 0
   m_Name: movingObstacle
   m_TagString: obstacle
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515577442244778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37, y: 1, z: 12}
+  m_LocalPosition: {x: -348.6, y: 0.5, z: 109.46746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515577442244778}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54631165988744994
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -101,18 +101,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65325344103688752
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1515577442244778}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114363831108206078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +112,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e75133bff5e882469285a31913591b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  from: {x: 37, y: 1, z: 2.5}
+  distanceToMove: {x: 15, y: 0, z: 0}
   to: {x: 37, y: 1, z: 12}
   speed: 5
+--- !u!135 &135244375271419520
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515577442244778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

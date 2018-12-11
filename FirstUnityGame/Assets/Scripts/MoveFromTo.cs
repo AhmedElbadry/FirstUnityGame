@@ -3,9 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MoveFromTo : MonoBehaviour {
 
+    public Vector3 distanceToMove;
     public Vector3 to;
+
     Vector3 from, step, currPos;
-    public float speed = 1f;
+
+    public float speed = 5f;
+
 
     float EP = 0.1f;
     bool isThereRes = false;
@@ -14,6 +18,7 @@ public class MoveFromTo : MonoBehaviour {
     {
         currPos = transform.position;
         from = transform.position;
+        to = from + distanceToMove;
 
 
     }
@@ -39,6 +44,7 @@ public class MoveFromTo : MonoBehaviour {
 
     void measureStep()
     {
+        step = new Vector3(0, 0, 0);
         if(Mathf.Abs(currPos.x - to.x) > EP)
             step.x = ((from.x < to.x)? 1 : -1) * speed * Time.deltaTime;
 
