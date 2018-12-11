@@ -6,6 +6,8 @@ public class PlayerCollision : MonoBehaviour {
 
     public PlayerMovement playerMovement;
 
+    bool isPlayerOnMovingGround = false;
+
     void OnCollisionEnter(Collision collisionInfo)
     {
 
@@ -15,5 +17,26 @@ public class PlayerCollision : MonoBehaviour {
             FindObjectOfType<GameManager>().EndGame();
         }
 
+        if (collisionInfo.collider.tag == "movingGround")
+        {
+            isPlayerOnMovingGround = true;
+        }
+    }
+
+
+    void OnCollisionExit(Collision collisionInfo)
+    {
+        if (collisionInfo.collider.tag == "movingGround")
+        {
+            isPlayerOnMovingGround = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isPlayerOnMovingGround)
+        {
+            FindObjectOfType<MoveFromTo>().playerOnGround();
+        }
     }
 }

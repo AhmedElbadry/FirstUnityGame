@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour {
     public Rigidbody rb;
     public float movementVelocity;
@@ -9,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(0, 0, 0);
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
         if (Input.GetKey("w"))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movementVelocity * Time.deltaTime);
@@ -38,5 +39,12 @@ public class PlayerMovement : MonoBehaviour {
         {
             FindObjectOfType<GameMananger>().EndGame();
         }*/
+    }
+
+    public void movePlayerWithGround(Vector3 step)
+    {
+        rb.position += step;
+
+        Debug.Log("whaaaaaaaaaaaaaaaat!!");
     }
 }

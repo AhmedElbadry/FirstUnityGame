@@ -7,6 +7,7 @@ TagManager:
   - wall
   - obstacle
   - end
+  - movingGround
   layers:
   - Default
   - TransparentFX

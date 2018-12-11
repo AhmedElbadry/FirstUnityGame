@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4456479498722884}
   - component: {fileID: 33129568446834140}
   - component: {fileID: 23996002503925130}
-  - component: {fileID: 65141002498972756}
   - component: {fileID: 54776589155099054}
   - component: {fileID: 114289048748909838}
   - component: {fileID: 114623734916277366}
+  - component: {fileID: 135582908354333178}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706149040103114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 2}
+  m_LocalPosition: {x: -16.83, y: 1, z: 25.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706149040103114}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54776589155099054
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -102,18 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65141002498972756
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1706149040103114}
-  m_Material: {fileID: 13400000, guid: 214fb0fb7c827444184228e42ec70c45, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114289048748909838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 54776589155099054}
-  movementVelocity: 0
+  movementVelocity: 500
   v: {x: 0, y: 0, z: 0}
 --- !u!114 &114623734916277366
 MonoBehaviour:
@@ -139,4 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb26415759304946860a6f068c6c315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 114289048748909838}
+--- !u!135 &135582908354333178
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706149040103114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
