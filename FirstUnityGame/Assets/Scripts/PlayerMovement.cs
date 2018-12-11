@@ -3,7 +3,7 @@
 
 public class PlayerMovement : MonoBehaviour {
     public Rigidbody rb;
-    public float movementVelocity;
+    public float movementVelocity = 500;
 
     public Vector3 v;
 
