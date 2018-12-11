@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject completeLevelUI;
 
+
+    void Start()
+    {
+        Debug.Log("sdsdsdf");
+    }
+
     public void EndGame()
     {
         if (gameEnded == false)

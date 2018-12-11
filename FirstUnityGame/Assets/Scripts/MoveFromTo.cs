@@ -17,10 +17,7 @@ public class MoveFromTo : MonoBehaviour {
 
 
     }
-    void Update()
-    {
-        Debug.Log(gameObject.name);
-    }
+
     void FixedUpdate()
     {
         isThere();

@@ -21,7 +21,6 @@ public class PlayerCollision : MonoBehaviour {
         if (collisionInfo.collider.tag == "movingGround")
         {
             isPlayerOnMovingGround = true;
-            Debug.Log("Col in");
             movingGround = collisionInfo.collider.gameObject;
         }
     }
@@ -32,7 +31,6 @@ public class PlayerCollision : MonoBehaviour {
         if (collisionInfo.collider.tag == "movingGround")
         {
             isPlayerOnMovingGround = false;
-            Debug.Log("Col out");
         }
     }
 
