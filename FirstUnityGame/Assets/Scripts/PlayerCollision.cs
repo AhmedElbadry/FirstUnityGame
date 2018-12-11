@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour {
     public PlayerMovement playerMovement;
 
     bool isPlayerOnMovingGround = false;
+    GameObject movingGround;
 
     void OnCollisionEnter(Collision collisionInfo)
     {
@@ -20,6 +21,8 @@ public class PlayerCollision : MonoBehaviour {
         if (collisionInfo.collider.tag == "movingGround")
         {
             isPlayerOnMovingGround = true;
+            Debug.Log("Col in");
+            movingGround = collisionInfo.collider.gameObject;
         }
     }
 
@@ -29,6 +32,7 @@ public class PlayerCollision : MonoBehaviour {
         if (collisionInfo.collider.tag == "movingGround")
         {
             isPlayerOnMovingGround = false;
+            Debug.Log("Col out");
         }
     }
 
@@ -36,7 +40,8 @@ public class PlayerCollision : MonoBehaviour {
     {
         if (isPlayerOnMovingGround)
         {
-            FindObjectOfType<MoveFromTo>().playerOnGround();
+            movingGround.GetComponent<MoveFromTo>().playerOnGround();
+            //FindObjectOfType<MoveFromTo>().playerOnGround(movingGround);
         }
     }
 }

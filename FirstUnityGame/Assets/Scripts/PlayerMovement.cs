@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour {
     public void movePlayerWithGround(Vector3 step)
     {
         rb.position += step;
-
-        Debug.Log("whaaaaaaaaaaaaaaaat!!");
+        Debug.Log(step);
     }
 }

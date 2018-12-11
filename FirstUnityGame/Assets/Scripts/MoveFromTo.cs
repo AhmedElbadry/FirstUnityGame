@@ -17,8 +17,11 @@ public class MoveFromTo : MonoBehaviour {
 
 
     }
-
-	void FixedUpdate()
+    void Update()
+    {
+        Debug.Log(gameObject.name);
+    }
+    void FixedUpdate()
     {
         isThere();
         if (!isThereRes)
@@ -33,6 +36,8 @@ public class MoveFromTo : MonoBehaviour {
             from = to;
             to = tmp;
         }
+
+        
     }
 
     void measureStep()
@@ -64,9 +69,11 @@ public class MoveFromTo : MonoBehaviour {
 
     }
 
-    public void playerOnGround()
+    public void playerOnGround(/*GameObject movingGround*/)
     {
-        FindObjectOfType<PlayerMovement>().movePlayerWithGround(step);
+        //Debug.Log("movingGround = " + movingGround.name + " this = " + gameObject.name);
+        //if(movingGround.name == gameObject.name)
+            FindObjectOfType<PlayerMovement>().movePlayerWithGround(step);
     }
 }
 
