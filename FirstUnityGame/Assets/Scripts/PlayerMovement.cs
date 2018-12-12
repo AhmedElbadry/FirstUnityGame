@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 
 public class PlayerMovement : MonoBehaviour {
@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour {
 
     float EP = 0.1f;
 
+    public int direction = 0;
+
     public Vector3 v;
 
 
@@ -22,22 +24,26 @@ public class PlayerMovement : MonoBehaviour {
         //rb.velocity = new Vector3(0, rb.velocity.y, 0);
         if (Input.GetKey("w"))
         {
+            direction = 0;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movementVelocity * Time.deltaTime);
             //rb.AddForce(0, 0, movementForce * Time.deltaTime, ForceMode.VelocityChange);
 
         }
         if (Input.GetKey("d"))
         {
+            direction = 1;
             rb.velocity = new Vector3(movementVelocity * Time.deltaTime, rb.velocity.y, rb.velocity.z);
             //rb.AddForce(movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (Input.GetKey("s"))
         {
+            direction = 2;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -movementVelocity * Time.deltaTime);
             //rb.AddForce(0, 0, -movementForce * Time.deltaTime, ForceMode.VelocityChange);
         }
         if (Input.GetKey("a"))
         {
+            direction = 3;
             rb.velocity = new Vector3(-movementVelocity * Time.deltaTime, rb.velocity.y, rb.velocity.z);
             //rb.AddForce(-movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
@@ -65,11 +71,12 @@ public class PlayerMovement : MonoBehaviour {
             FindObjectOfType<GameManager>().EndGame();
         }
 
+        transform.rotation = Quaternion.Euler(270, 0, 90 * direction);
 
-        /*if (rb.position.y < -1f)
-        {
-            FindObjectOfType<GameMananger>().EndGame();
-        }*/
+            /*if (rb.position.y < -1f)
+            {
+                FindObjectOfType<GameMananger>().EndGame();
+            }*/
     }
 
     public void movePlayerWithGround(Vector3 step)
