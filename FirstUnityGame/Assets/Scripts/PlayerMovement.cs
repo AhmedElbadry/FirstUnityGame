@@ -13,37 +13,41 @@ public class PlayerMovement : MonoBehaviour {
 
     float EP = 0.1f;
 
-    public int direction = 0;
+    public int new_direction, direction = 1;
+    public int [] angle = { -1, 0, 90, 45, 180, -1, 135, -1, 270, 315, -1, -1, 225, -1, -1, -1};
 
     public Vector3 v;
 
 
     void FixedUpdate()
     {
+        new_direction = 0;
         rb.AddForce(0, downForce, 0);
         //rb.velocity = new Vector3(0, rb.velocity.y, 0);
         if (Input.GetKey("w"))
         {
-            direction = 0;
+            new_direction |= (1 << 0);
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movementVelocity * Time.deltaTime);
             //rb.AddForce(0, 0, movementForce * Time.deltaTime, ForceMode.VelocityChange);
 
         }
         if (Input.GetKey("d"))
         {
-            direction = 1;
+            new_direction |= (1 << 1);
             rb.velocity = new Vector3(movementVelocity * Time.deltaTime, rb.velocity.y, rb.velocity.z);
             //rb.AddForce(movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (Input.GetKey("s"))
         {
-            direction = 2;
+            new_direction |= (1 << 2);
+            new_direction &= (~(1 << 0));
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -movementVelocity * Time.deltaTime);
             //rb.AddForce(0, 0, -movementForce * Time.deltaTime, ForceMode.VelocityChange);
         }
         if (Input.GetKey("a"))
         {
-            direction = 3;
+            new_direction |= (1 << 3);
+            new_direction &= (~(1 << 1));
             rb.velocity = new Vector3(-movementVelocity * Time.deltaTime, rb.velocity.y, rb.velocity.z);
             //rb.AddForce(-movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
@@ -71,7 +75,10 @@ public class PlayerMovement : MonoBehaviour {
             FindObjectOfType<GameManager>().EndGame();
         }
 
-        transform.rotation = Quaternion.Euler(270, 0, 90 * direction);
+        if (new_direction > 0)
+            direction = new_direction;
+
+        transform.rotation = Quaternion.Euler(270, 0, angle[direction]);
 
             /*if (rb.position.y < -1f)
             {
