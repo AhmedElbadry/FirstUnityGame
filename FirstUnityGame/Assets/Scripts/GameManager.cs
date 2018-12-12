@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject completeLevelUI;
-
+    public GameObject gameOverUI;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         if (gameEnded == false)
         {
             gameEnded = true;
-            Debug.Log("Game Over");
+            gameOverUI.SetActive(true);
             Invoke("restart", restartDelay);
         }
 

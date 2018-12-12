@@ -6,6 +6,11 @@ public class PlayerMovement : MonoBehaviour {
     public float movementVelocity = 500;
     public float brakesControl = 100;
 
+    public float downForce = -10;
+
+    public float MAX_Y_POS = 5;
+    public float MIN_Y_POS = -1;
+
     float EP = 0.1f;
 
     public Vector3 v;
@@ -13,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        rb.AddForce(0, downForce, 0);
         //rb.velocity = new Vector3(0, rb.velocity.y, 0);
         if (Input.GetKey("w"))
         {
@@ -48,6 +54,15 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector3(x , y, z);
 
             //rb.AddForce(-movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        }
+
+        if(rb.position.y > MAX_Y_POS)
+        {
+            rb.position = new Vector3(rb.position.x, MAX_Y_POS, rb.position.z);
+        }
+        if (rb.position.y < MIN_Y_POS)
+        {
+            FindObjectOfType<GameManager>().EndGame();
         }
 
 
