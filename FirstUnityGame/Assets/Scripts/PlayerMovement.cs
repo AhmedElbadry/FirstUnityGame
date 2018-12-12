@@ -41,13 +41,11 @@ public class PlayerMovement : MonoBehaviour {
             float y = rb.velocity.y;
             float z = rb.velocity.z;
 
-            Debug.Log("v was " + x + " " + y + " " + z);
 
             measureVelocityAfterBrakes(ref x);
             //measureVelocityAfterBrakes(ref y);
             measureVelocityAfterBrakes(ref z);
             rb.velocity = new Vector3(x , y, z);
-            Debug.Log("v now " + x + " " + y + " " + z);
 
             //rb.AddForce(-movementForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
